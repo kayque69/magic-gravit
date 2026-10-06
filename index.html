@@ -1,1309 +1,414 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <title>Racha Chueiri — Escola de Magia</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+        rel="stylesheet"
+    >
 </head>
+
 <body>
-    
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="pt-BR" class="dark scroll-smooth">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>A Rocha Chueiri | Escola Mágica Ancestral</title>
 
-  <!-- Google Fonts: Cinzel Decorative, MedievalSharp, Inter -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@500;700;800;900&family=MedievalSharp&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Fundo decorativo -->
+    <div class="grain"></div>
 
-  <!-- FontAwesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CABEÇALHO -->
+    <header class="cabecalho">
 
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            gold: {
-              300: '#fef08a',
-              400: '#facc15',
-              500: '#eab308',
-              600: '#ca8a04',
-              700: '#a16207',
-            },
-            arcane: {
-              900: '#0c0714',
-              800: '#180d2b',
-              700: '#2a164a',
-              500: '#7c3aed',
-              400: '#a78bfa',
-              300: '#c4b5fd',
-            },
-            parchment: {
-              100: '#fef3c7',
-              200: '#fde68a',
-              300: '#f59e0b',
-              800: '#451a03',
-              900: '#271003',
-            }
-          },
-          fontFamily: {
-            cinzel: ['Cinzel Decorative', 'Cinzel', 'serif'],
-            heading: ['Cinzel', 'serif'],
-            medieval: ['MedievalSharp', 'cursive'],
-            sans: ['Inter', 'sans-serif'],
-          },
-          boxShadow: {
-            'gold-glow': '0 0 25px rgba(234, 179, 8, 0.35)',
-            'arcane-glow': '0 0 30px rgba(124, 58, 237, 0.4)',
-            'parchment-inner': 'inset 0 0 40px rgba(69, 26, 3, 0.4)',
-          }
-        }
-      }
-    }
-  </script>
-
-  <style>
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar {
-      width: 10px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #0c0714;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #451a03;
-      border: 1px solid #eab308;
-      border-radius: 5px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #7c3aed;
-    }
-
-    /* Particle Canvas Background */
-    #magic-canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    /* Scroll/Parchment Texture Styling */
-    .parchment-bg {
-      background: #f3e5c8;
-      background-image: 
-        radial-gradient(circle, rgba(160, 82, 45, 0.15) 0%, rgba(0,0,0,0) 70%),
-        repeating-linear-gradient(0deg, rgba(139, 69, 19, 0.03) 0px, rgba(139, 69, 19, 0.03) 2px, transparent 2px, transparent 4px);
-      box-shadow: inset 0 0 60px rgba(69, 26, 3, 0.5), 0 10px 30px rgba(0,0,0,0.8);
-      border: 2px solid #b45309;
-    }
-
-    .parchment-text {
-      color: #2e1003;
-      text-shadow: 0 1px 1px rgba(255,255,255,0.4);
-    }
-
-    /* Golden Filigree Borders */
-    .gold-border {
-      border: 2px solid #eab308;
-      position: relative;
-    }
-    .gold-border::before {
-      content: '✦';
-      position: absolute;
-      top: -10px;
-      left: -10px;
-      color: #facc15;
-      font-size: 14px;
-      background: #0c0714;
-      padding: 0 4px;
-    }
-    .gold-border::after {
-      content: '✦';
-      position: absolute;
-      bottom: -10px;
-      right: -10px;
-      color: #facc15;
-      font-size: 14px;
-      background: #0c0714;
-      padding: 0 4px;
-    }
-
-    /* Pulse & Float Animations */
-    @keyframes floatMagic {
-      0%, 100% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-8px) rotate(1deg); }
-    }
-    .animate-float-magic {
-      animation: floatMagic 5s ease-in-out infinite;
-    }
-
-    @keyframes pulseGlow {
-      0%, 100% { opacity: 0.6; filter: drop-shadow(0 0 10px rgba(124, 58, 237, 0.6)); }
-      50% { opacity: 1; filter: drop-shadow(0 0 25px rgba(234, 179, 8, 0.9)); }
-    }
-    .animate-pulse-glow {
-      animation: pulseGlow 3s infinite alternate;
-    }
-
-    /* Custom Toast Notification */
-    #toast-container {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      z-index: 999;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      pointer-events: none;
-    }
-    .toast-card {
-      pointer-events: auto;
-      animation: slideIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-    @keyframes slideIn {
-      from { transform: translateX(100%) scale(0.8); opacity: 0; }
-      to { transform: translateX(0) scale(1); opacity: 1; }
-    }
-  </style>
-</head>
-
-<body class="bg-arcane-900 text-slate-100 font-sans min-h-screen relative overflow-x-hidden selection:bg-gold-500 selection:text-arcane-900">
-
-  <canvas id="magic-canvas"></canvas>
-  <div id="toast-container"></div>
-
-  <!-- NAVIGATION HEADER -->
-  <header class="fixed top-0 left-0 w-full z-40 bg-arcane-900/90 backdrop-blur-md border-b border-gold-600/30">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-20">
-        
-        <!-- Logo -->
-        <a href="#prefacio" class="flex items-center gap-3 group">
-          <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-gold-600 via-amber-500 to-indigo-600 p-[2px] shadow-gold-glow group-hover:scale-105 transition-transform">
-            <div class="w-full h-full bg-arcane-900 rounded-full flex items-center justify-center">
-              <i class="fa-solid fa-hat-wizard text-gold-400 text-xl group-hover:rotate-12 transition-transform"></i>
-            </div>
-          </div>
-          <div>
-            <span class="font-cinzel text-xl sm:text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-gold-300 via-amber-400 to-gold-600 tracking-wider">
-              A Rocha Chueiri
-            </span>
-            <span class="block text-[10px] font-medieval text-indigo-300 tracking-widest uppercase">Escola Mágica Ancestral</span>
-          </div>
-        </a>
-
-        <!-- Desktop Navigation Links -->
-        <nav class="hidden lg:flex items-center gap-6 font-heading text-sm font-bold tracking-wide text-amber-200/80">
-          <a href="#prefacio" class="hover:text-gold-400 transition-colors flex items-center gap-1.5"><i class="fa-solid fa-scroll text-xs"></i> Prefácio</a>
-          <a href="#ficha" class="hover:text-gold-400 transition-colors flex items-center gap-1.5"><i class="fa-solid fa-id-card text-xs"></i> Ficha do Aluno</a>
-          <a href="#simulador" class="hover:text-gold-400 transition-colors flex items-center gap-1.5"><i class="fa-solid fa-wand-sparkles text-xs"></i> Treinamento & Caça</a>
-          <a href="#bestiario" class="hover:text-gold-400 transition-colors flex items-center gap-1.5"><i class="fa-solid fa-dragon text-xs"></i> Bestiário</a>
-          <a href="#competicao" class="hover:text-gold-400 transition-colors flex items-center gap-1.5"><i class="fa-solid fa-trophy text-xs"></i> Competição Anual</a>
-        </nav>
-
-        <!-- Right Sound Effect & Quick Action Button -->
-        <div class="flex items-center gap-3">
-          <button id="sound-toggle-btn" class="px-3.5 py-2 rounded-xl bg-arcane-800 border border-gold-600/40 text-gold-400 hover:bg-gold-500/20 text-xs font-semibold flex items-center gap-2 transition-all">
-            <i class="fa-solid fa-volume-high text-sm" id="sound-icon"></i>
-            <span class="hidden sm:inline">Som Mágico</span>
-          </button>
-
-          <a href="#ficha" class="px-4 py-2 rounded-xl bg-gradient-to-r from-gold-600 via-amber-500 to-gold-600 text-arcane-900 font-cinzel font-bold text-xs uppercase tracking-wider shadow-gold-glow hover:scale-105 active:scale-95 transition-all">
-            Criar Aluno
-          </a>
+        <div class="brasao">
+            ✦
         </div>
 
-      </div>
-    </div>
-  </header>
-
-  <!-- HERO & PREFÁCIO SECTION -->
-  <section id="prefacio" class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden z-10">
-    <!-- Ambient Glow Orbs -->
-    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-indigo-600/20 rounded-full blur-3xl pointer-events-none"></div>
-    <div class="absolute top-1/3 right-10 w-80 h-80 bg-amber-500/15 rounded-full blur-3xl pointer-events-none"></div>
-
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
-      
-      <!-- Section Header Badge -->
-      <div class="text-center mb-8">
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-arcane-800 border border-gold-500/40 text-gold-300 font-medieval text-sm shadow-md">
-          <i class="fa-solid fa-feather-pointed text-gold-400"></i>
-          <span>Documento Oficial do Arquimago Professor</span>
-        </div>
-      </div>
-
-      <!-- MAIN PARCHMENT CONTAINER (Matching exact text from user image) -->
-      <div class="parchment-bg rounded-2xl p-6 sm:p-10 md:p-14 relative shadow-2xl border-4 border-amber-800 max-w-4xl mx-auto transform hover:rotate-[0.2deg] transition-transform">
-        
-        <!-- Wax Seal Badge Decorative Overlay -->
-        <div class="absolute -top-6 -right-4 sm:-top-8 sm:-right-6 w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-red-700 via-red-800 to-amber-950 rounded-full border-2 border-gold-400 flex items-center justify-center shadow-2xl z-30">
-          <i class="fa-solid fa-stamp text-gold-300 text-2xl sm:text-3xl"></i>
+        <div class="titulo-header">
+            <span>Crônicas das Montanhas Nebulosas</span>
+            <h1>Racha Chueiri</h1>
+            <p>Escola Ancestral de Magia</p>
         </div>
 
-        <!-- Scroll Title -->
-        <div class="text-center mb-8 border-b-2 border-amber-900/30 pb-6">
-          <h1 class="font-cinzel font-black text-3xl sm:text-5xl md:text-6xl text-amber-950 tracking-wider uppercase drop-shadow-sm">
-            PREFÁCIO
-          </h1>
-          <p class="font-medieval text-amber-900 text-lg sm:text-xl mt-1">A Rocha Chueiri • Montanhas Nebulosas</p>
+        <div class="ornamento">
+            ❦
         </div>
 
-        <!-- Scroll Body Grid: Wizard Illustration + Exact Paragraphs -->
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-          
-          <!-- Wizard Illustration Card -->
-          <div class="md:col-span-4 flex flex-col items-center justify-center text-center group">
-            <div class="relative w-48 h-64 sm:w-56 sm:h-72 rounded-2xl overflow-hidden border-4 border-amber-900/60 shadow-xl bg-amber-950/20 p-2 flex items-center justify-center">
-              <!-- SVG Wizard Portrait Art -->
-              <svg class="w-full h-full text-amber-900 animate-float-magic" viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Wizard Silhouette & Magic Aura -->
-                <circle cx="100" cy="100" r="70" fill="#2a1003" opacity="0.15"/>
-                <!-- Hat -->
-                <path d="M100 20 L60 90 L140 90 Z" fill="#3a1805" stroke="#78350f" stroke-width="3"/>
-                <path d="M40 90 Q100 80 160 90 Q100 105 40 90 Z" fill="#271003" stroke="#78350f" stroke-width="3"/>
-                <circle cx="100" cy="85" r="5" fill="#facc15"/>
-                <!-- Beard & Face -->
-                <circle cx="100" cy="115" r="22" fill="#eed9b5"/>
-                <path d="M82 120 Q100 180 118 120 Q100 195 82 120 Z" fill="#e2e8f0" stroke="#cbd5e1"/>
-                <!-- Cloak & Staff -->
-                <path d="M50 210 L75 130 L125 130 L150 210 Z" fill="#1c0a02"/>
-                <line x1="145" y1="50" x2="145" y2="210" stroke="#78350f" stroke-width="6" stroke-linecap="round"/>
-                <circle cx="145" cy="45" r="10" fill="#38bdf8" class="animate-pulse"/>
-              </svg>
-            </div>
-            <span class="font-medieval text-amber-950 text-sm mt-3 font-bold">O Arquimago Professor</span>
-            <span class="text-[11px] text-amber-900/80 italic">Lorde Guardião da Rocha Chueiri</span>
-          </div>
+    </header>
 
-          <!-- Exact Text Content from User Image -->
-          <div class="md:col-span-8 space-y-5 parchment-text font-serif text-base sm:text-lg leading-relaxed text-justify">
-            
-            <p class="first-letter:text-5xl first-letter:font-cinzel first-letter:font-bold first-letter:float-left first-letter:mr-3 first-letter:text-amber-950">
-              <strong>A Rocha Chueiri</strong> é uma escola mágica ancestral, escondida entre as Montanhas Nebulosas, onde jovens de diversas raças aprendem magia ao lado de criaturas mágicas como grifos, fênixes e dragões. As turmas se preparam para a Competição Anual, organizadas pelo Arquimago Professor, onde cada equipe enfrentará desafios mágicos em busca da vitória.
-            </p>
 
-            <p class="border-l-2 border-amber-800/40 pl-4 italic">
-              A rivalidade está acirrada, e apenas as famílias mais habilidosas e unidas conquistarão o troféu. A disputa promete revelar não apenas talento, mas também segredos ocultos entre os alunos.
-            </p>
+    <!-- MENU -->
+    <nav class="menu">
 
-            <p>
-              A força de cada aluno é medida por seu nível, e para evoluir é preciso dedicação em duas frentes: o <strong>estudo da magia</strong> e a <strong>caça de monstros</strong>. O aprendizado teórico acontece de forma constante, mesmo à distância, como um sussurro de sabedoria que nunca se cala. Já a caça exige coragem e presença.
-            </p>
+        <a href="#prefacio">Prefácio</a>
+        <a href="#escola">A Escola</a>
+        <a href="#competicao">A Competição</a>
+        <a href="#evolucao">Evolução</a>
 
-          </div>
+    </nav>
 
-        </div>
 
-        <!-- Scroll Footer Badges -->
-        <div class="mt-8 pt-6 border-t border-amber-900/20 flex flex-wrap items-center justify-between gap-4 text-xs font-medieval text-amber-900">
-          <div class="flex items-center gap-2">
-            <i class="fa-solid fa-mountain text-amber-800"></i>
-            <span>Localização: Montanhas Nebulosas</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <i class="fa-solid fa-dragon text-amber-800"></i>
-            <span>Companheiros: Grifos, Fênixes e Dragões</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <i class="fa-solid fa-book-journal-whills text-amber-800"></i>
-            <span>Método: Teoria à Distância + Caça Presencial</span>
-          </div>
-        </div>
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main>
 
-      </div>
+        <!-- HERO -->
+        <section class="hero">
 
-    </div>
-  </section>
+            <div class="hero-conteudo">
 
-  <!-- CHARACTER CREATOR SECTION -->
-  <section id="ficha" class="py-20 bg-arcane-800/60 relative z-20 border-t border-b border-gold-600/20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="text-center max-w-3xl mx-auto mb-14">
-        <h2 class="font-cinzel text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-gold-300 via-amber-400 to-gold-500 uppercase tracking-wider">
-          Ficha do Aluno de Rocha Chueiri
-        </h2>
-        <p class="font-medieval text-slate-300 text-lg mt-2">
-          Crie seu aprendiz de magia, escolha sua raça e creature companheira para ingressar na Competição Anual!
-        </p>
-      </div>
+                <p class="pequeno-titulo">
+                    ✦ Registro Ancestral ✦
+                </p>
 
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        
-        <!-- Character Creation Form -->
-        <div class="lg:col-span-7 bg-arcane-900/90 rounded-2xl p-6 sm:p-8 gold-border shadow-2xl space-y-6">
-          <h3 class="font-cinzel text-xl font-bold text-gold-400 flex items-center gap-2 border-b border-gold-600/30 pb-3">
-            <i class="fa-solid fa-pen-nib"></i> Registro de Matrícula
-          </h3>
+                <h2>
+                    Um lugar onde a magia<br>
+                    nunca deixa de ser lembrada
+                </h2>
 
-          <!-- Form Fields -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label class="block font-medieval text-sm text-amber-200 mb-1">Nome do Aluno(a)</label>
-              <input type="text" id="char-name" value="Valerius de Aethel" class="w-full px-4 py-2.5 rounded-xl bg-arcane-800 border border-gold-600/40 text-slate-100 focus:outline-none focus:border-gold-400 font-sans text-sm" placeholder="Ex: Eldrin Canto da Névoa">
-            </div>
-
-            <div>
-              <label class="block font-medieval text-sm text-amber-200 mb-1">Família / Casa Mágica</label>
-              <select id="char-house" class="w-full px-4 py-2.5 rounded-xl bg-arcane-800 border border-gold-600/40 text-slate-100 focus:outline-none focus:border-gold-400 font-sans text-sm">
-                <option value="Família Ignis">Família Ignis (Fogo & Coragem)</option>
-                <option value="Família Astralis">Família Astralis (Estrelas & Sabedoria)</option>
-                <option value="Família Sylvanus">Família Sylvanus (Natureza & Cura)</option>
-                <option value="Família Umbra">Família Umbra (Sombras & Feitiço)</option>
-              </select>
-            </div>
-          </div>
-
-          <!-- Race Selector -->
-          <div>
-            <label class="block font-medieval text-sm text-amber-200 mb-2">Selecione sua Raça Ancestral</label>
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
-              <button type="button" onclick="selectRace('Humano', 'Adaptabilidade & Aprendizado Rápido', 'fa-user-ninja')" class="race-btn px-3 py-2.5 rounded-xl bg-arcane-800 border border-gold-600/30 text-xs text-left hover:border-gold-400 active border-gold-400 text-gold-300">
-                <i class="fa-solid fa-user-ninja text-gold-400 mb-1 block text-base"></i>
-                <div class="font-bold">Humano</div>
-                <div class="text-[10px] text-slate-400">Flexibilidade</div>
-              </button>
-
-              <button type="button" onclick="selectRace('Elfo', 'Afinidade Natural com Mana Teórica', 'fa-wand-magic')" class="race-btn px-3 py-2.5 rounded-xl bg-arcane-800 border border-gold-600/30 text-xs text-left hover:border-gold-400 text-slate-300">
-                <i class="fa-solid fa-wand-magic text-indigo-400 mb-1 block text-base"></i>
-                <div class="font-bold">Elfo</div>
-                <div class="text-[10px] text-slate-400">+Magia Teórica</div>
-              </button>
-
-              <button type="button" onclick="selectRace('Anão', 'Resistência Física & Força de Combate', 'fa-hammer')" class="race-btn px-3 py-2.5 rounded-xl bg-arcane-800 border border-gold-600/30 text-xs text-left hover:border-gold-400 text-slate-300">
-                <i class="fa-solid fa-hammer text-amber-500 mb-1 block text-base"></i>
-                <div class="font-bold">Anão</div>
-                <div class="text-[10px] text-slate-400">+Defesa & Caça</div>
-              </button>
-
-              <button type="button" onclick="selectRace('Draconato', 'Sopro Mágico & Presença Imponente', 'fa-dragon')" class="race-btn px-3 py-2.5 rounded-xl bg-arcane-800 border border-gold-600/30 text-xs text-left hover:border-gold-400 text-slate-300">
-                <i class="fa-solid fa-dragon text-red-400 mb-1 block text-base"></i>
-                <div class="font-bold">Draconato</div>
-                <div class="text-[10px] text-slate-400">+Sopro de Fogo</div>
-              </button>
-            </div>
-          </div>
-
-          <!-- Creature Companion Selection -->
-          <div>
-            <label class="block font-medieval text-sm text-amber-200 mb-2">Criatura Mágica Companheira</label>
-            <div class="grid grid-cols-3 gap-3">
-              <button type="button" onclick="selectCreature('Grifo de Prata', 'Agilidade nos Céus & Guarda Leal', 'fa-feather')" class="creature-btn p-3 rounded-xl bg-arcane-800 border border-gold-600/30 text-center hover:border-gold-400 text-gold-300 border-gold-400">
-                <i class="fa-solid fa-feather text-cyan-400 text-2xl mb-1 block"></i>
-                <span class="font-bold text-xs block">Grifo</span>
-              </button>
-              <button type="button" onclick="selectCreature('Fênix Solar', 'Renascimento Mágico & Aura Aquece', 'fa-fire-flame-curved')" class="creature-btn p-3 rounded-xl bg-arcane-800 border border-gold-600/30 text-center hover:border-gold-400 text-slate-300">
-                <i class="fa-solid fa-fire-flame-curved text-amber-500 text-2xl mb-1 block"></i>
-                <span class="font-bold text-xs block">Fênix</span>
-              </button>
-              <button type="button" onclick="selectCreature('Dragão de Rubro', 'Poder Devastador & Fogo Ancestral', 'fa-dragon')" class="creature-btn p-3 rounded-xl bg-arcane-800 border border-gold-600/30 text-center hover:border-gold-400 text-slate-300">
-                <i class="fa-solid fa-dragon text-red-500 text-2xl mb-1 block"></i>
-                <span class="font-bold text-xs block">Dragão</span>
-              </button>
-            </div>
-          </div>
-
-          <!-- Initial Stats Balance -->
-          <div class="bg-arcane-950 p-4 rounded-xl border border-gold-600/20 space-y-3">
-            <div class="flex justify-between items-center text-xs font-medieval text-gold-300">
-              <span>Distribuição Inicial de Foco</span>
-              <span id="stat-balance-desc">Equilibrado</span>
-            </div>
-            <div class="grid grid-cols-2 gap-4">
-              <div>
-                <span class="text-[11px] text-slate-400 block mb-1">Estudo Teórico (À Distância)</span>
-                <input type="range" id="study-focus" min="10" max="90" value="50" oninput="updateFocusDistribution(this.value)" class="w-full accent-gold-500 cursor-pointer">
-              </div>
-              <div>
-                <span class="text-[11px] text-slate-400 block mb-1">Caça de Monstros (Presencial)</span>
-                <div class="text-xs font-bold text-amber-400 pt-1" id="hunt-focus-val">50% Foco em Caça</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Action button -->
-          <button type="button" onclick="generateStudentCard()" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-gold-600 via-amber-500 to-gold-600 text-arcane-900 font-cinzel font-black text-sm uppercase tracking-wider shadow-gold-glow hover:scale-[1.01] active:scale-95 transition-all">
-            <i class="fa-solid fa-wand-magic-sparkles mr-2"></i> Emitir Ficha Estudantil
-          </button>
-
-        </div>
-
-        <!-- Student Preview Pass Card (Interactive Result) -->
-        <div class="lg:col-span-5">
-          <div class="sticky top-28">
-            <div class="text-center mb-3 font-medieval text-gold-400 text-xs tracking-widest uppercase">
-              ✦ Carteira do Aprendiz Mágico ✦
-            </div>
-
-            <!-- Card Design -->
-            <div id="student-card-preview" class="parchment-bg rounded-2xl p-6 border-4 border-amber-900 shadow-2xl relative overflow-hidden text-amber-950 space-y-4">
-              
-              <!-- Seal -->
-              <div class="flex items-center justify-between border-b-2 border-amber-900/30 pb-3">
-                <div class="flex items-center gap-2">
-                  <i class="fa-solid fa-shield-halved text-amber-800 text-2xl"></i>
-                  <div>
-                    <h4 class="font-cinzel font-black text-lg leading-tight">ROCHA CHUEIRI</h4>
-                    <span class="text-[10px] font-medieval text-amber-900">Escola Mágica Ancestral</span>
-                  </div>
+                <div class="linha-ornamental">
+                    <span>◆</span>
                 </div>
-                <span class="px-2.5 py-1 rounded-full bg-amber-950 text-gold-300 font-mono text-[10px] font-bold">NV. <span id="card-level">1</span></span>
-              </div>
 
-              <!-- Student Info -->
-              <div class="space-y-2">
+                <p>
+                    Entre as Montanhas Nebulosas existe uma escola
+                    escondida do mundo comum, onde jovens de diversas
+                    raças aprendem os antigos caminhos da magia.
+                </p>
+
+                <button id="btnLer">
+                    Abrir o manuscrito
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- PREFÁCIO -->
+        <section id="prefacio" class="pagina">
+
+            <div class="numero-pagina">
+                I
+            </div>
+
+            <div class="titulo-secao">
+
+                <span class="ornamento-lateral">❦</span>
+
                 <div>
-                  <span class="text-[10px] font-medieval uppercase tracking-wider text-amber-900/70 block">Aprendiz</span>
-                  <p id="card-name" class="font-cinzel font-extrabold text-xl text-amber-950">Valerius de Aethel</p>
+                    <p>Primeiro registro</p>
+                    <h2>Prefácio</h2>
                 </div>
 
-                <div class="grid grid-cols-2 gap-2 text-xs font-serif">
-                  <div class="bg-amber-950/10 p-2 rounded-lg border border-amber-900/20">
-                    <span class="text-[10px] font-medieval block text-amber-900/80">Família / Casa</span>
-                    <strong id="card-house" class="text-amber-950">Família Ignis</strong>
-                  </div>
-                  <div class="bg-amber-950/10 p-2 rounded-lg border border-amber-900/20">
-                    <span class="text-[10px] font-medieval block text-amber-900/80">Raça</span>
-                    <strong id="card-race" class="text-amber-950">Humano</strong>
-                  </div>
+                <span class="ornamento-lateral">❦</span>
+
+            </div>
+
+
+            <div class="texto-prefacio">
+
+                <p class="letra-capitular">
+                    A
+                </p>
+
+                <p>
+                    Racha Chueiri é uma escola mágica ancestral,
+                    escondida entre as Montanhas Nebulosas, onde
+                    jovens de diversas raças aprendem magia ao lado
+                    de criaturas mágicas como grifos, fênixes e
+                    dragões.
+                </p>
+
+                <p>
+                    As turmas se preparam para a Competição Anual,
+                    organizada pelo Arquimago Professor, onde cada
+                    equipe enfrentará desafios mágicos em busca da
+                    vitória.
+                </p>
+
+                <p>
+                    A rivalidade está enraizada, e apenas as famílias
+                    mais habilidosas e unidas conquistaram o troféu.
+                    A disputa promete revelar não apenas talento,
+                    mas também segredos ocultos entre os alunos.
+                </p>
+
+                <p>
+                    A força de cada aluno é medida por seu nível,
+                    e para evoluir é preciso dedicação em duas
+                    frentes: o estudo da magia e a caça de monstros.
+                </p>
+
+                <p>
+                    O aprendizado teórico acontece de forma constante,
+                    mesmo à distância, como um sussurro de sabedoria
+                    que nunca se cala. Já a caça exige coragem e
+                    presença.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ESCOLA -->
+        <section id="escola" class="bloco-escuro">
+
+            <div class="conteudo-limitado">
+
+                <p class="etiqueta">
+                    SEGUNDO REGISTRO
+                </p>
+
+                <h2>
+                    A Escola
+                </h2>
+
+                <div class="linha-dourada"></div>
+
+                <p class="descricao">
+                    A Racha Chueiri permanece escondida entre as
+                    Montanhas Nebulosas. Seu conhecimento é passado
+                    através das gerações, mantendo viva uma tradição
+                    mágica ancestral.
+                </p>
+
+
+                <div class="cards">
+
+                    <article class="card">
+
+                        <div class="icone">✦</div>
+
+                        <h3>Magia</h3>
+
+                        <p>
+                            Jovens de diversas raças estudam os
+                            conhecimentos e os fundamentos da magia.
+                        </p>
+
+                    </article>
+
+
+                    <article class="card">
+
+                        <div class="icone">♜</div>
+
+                        <h3>Criaturas</h3>
+
+                        <p>
+                            Grifos, fênixes e dragões fazem parte
+                            do universo mágico da escola.
+                        </p>
+
+                    </article>
+
+
+                    <article class="card">
+
+                        <div class="icone">⚔</div>
+
+                        <h3>Desafios</h3>
+
+                        <p>
+                            Os alunos precisam demonstrar coragem,
+                            conhecimento e dedicação.
+                        </p>
+
+                    </article>
+
                 </div>
 
-                <div class="bg-amber-950/10 p-2.5 rounded-lg border border-amber-900/20 flex items-center justify-between">
-                  <div class="flex items-center gap-2">
-                    <i id="card-creature-icon" class="fa-solid fa-feather text-amber-800 text-lg"></i>
-                    <div>
-                      <span class="text-[10px] font-medieval block text-amber-900/80">Companheiro Mágico</span>
-                      <strong id="card-creature" class="text-amber-950 text-xs">Grifo de Prata</strong>
+            </div>
+
+        </section>
+
+
+        <!-- COMPETIÇÃO -->
+        <section id="competicao" class="pagina competicao">
+
+            <div class="numero-pagina">
+                III
+            </div>
+
+            <div class="titulo-secao">
+
+                <span class="ornamento-lateral">❦</span>
+
+                <div>
+                    <p>Terceiro registro</p>
+                    <h2>A Competição Anual</h2>
+                </div>
+
+                <span class="ornamento-lateral">❦</span>
+
+            </div>
+
+
+            <div class="competicao-conteudo">
+
+                <div class="texto">
+
+                    <p>
+                        A Competição Anual é um dos momentos mais
+                        importantes da vida dos alunos da Racha Chueiri.
+                    </p>
+
+                    <p>
+                        Cada equipe deverá enfrentar desafios mágicos
+                        em busca da vitória, colocando à prova aquilo
+                        que aprendeu durante sua jornada.
+                    </p>
+
+                    <p>
+                        A rivalidade entre as famílias torna a disputa
+                        ainda mais intensa. Somente os grupos mais
+                        habilidosos e unidos conseguiram conquistar
+                        o troféu.
+                    </p>
+
+                </div>
+
+
+                <div class="trofeu">
+
+                    <div class="trofeu-simbolo">
+                        ♜
                     </div>
-                  </div>
-                  <span class="text-[10px] font-bold text-amber-900 bg-amber-200/60 px-2 py-0.5 rounded">Leal</span>
-                </div>
-              </div>
 
-              <!-- Dynamic Attributes Bar -->
-              <div class="pt-2 border-t border-amber-900/20 space-y-2 text-xs">
-                <div>
-                  <div class="flex justify-between text-[11px] font-bold mb-1">
-                    <span>Estudo da Magia (Sabedoria)</span>
-                    <span id="card-wisdom">15 PTS</span>
-                  </div>
-                  <div class="w-full bg-amber-950/20 h-2 rounded-full overflow-hidden">
-                    <div id="card-wisdom-bar" class="bg-indigo-700 h-full transition-all duration-500" style="width: 50%;"></div>
-                  </div>
-                </div>
+                    <h3>
+                        O Troféu
+                    </h3>
 
-                <div>
-                  <div class="flex justify-between text-[11px] font-bold mb-1">
-                    <span>Caça de Monstros (Coragem)</span>
-                    <span id="card-courage">15 PTS</span>
-                  </div>
-                  <div class="w-full bg-amber-950/20 h-2 rounded-full overflow-hidden">
-                    <div id="card-courage-bar" class="bg-red-700 h-full transition-all duration-500" style="width: 50%;"></div>
-                  </div>
-                </div>
-              </div>
+                    <p>
+                        Símbolo da conquista das famílias
+                        mais habilidosas e unidas.
+                    </p>
 
-              <!-- Motto Footer -->
-              <p class="text-[11px] italic text-center text-amber-900/80 pt-1 border-t border-amber-900/10">
-                "O aprendizado sussurra à distância. A caça exige coragem presencial."
-              </p>
+                </div>
 
             </div>
 
-          </div>
+        </section>
+
+
+        <!-- EVOLUÇÃO -->
+        <section id="evolucao" class="bloco-evolucao">
+
+            <div class="conteudo-limitado">
+
+                <p class="etiqueta">
+                    QUARTO REGISTRO
+                </p>
+
+                <h2>
+                    O Caminho da Evolução
+                </h2>
+
+                <div class="linha-dourada"></div>
+
+                <p class="descricao">
+                    A força de cada aluno é medida por seu nível.
+                    Para evoluir, entretanto, não basta apenas
+                    conhecimento.
+                </p>
+
+
+                <div class="caminhos">
+
+                    <div class="caminho">
+
+                        <div class="numero">
+                            01
+                        </div>
+
+                        <div>
+                            <h3>Estudo da Magia</h3>
+
+                            <p>
+                                O aprendizado teórico acontece
+                                constantemente, mantendo vivo o
+                                conhecimento mágico.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="caminho">
+
+                        <div class="numero">
+                            02
+                        </div>
+
+                        <div>
+                            <h3>Caça de Monstros</h3>
+
+                            <p>
+                                A segunda frente exige coragem,
+                                presença e disposição para enfrentar
+                                os perigos do mundo mágico.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FRASE FINAL -->
+        <section class="final">
+
+            <div class="final-moldura">
+
+                <span>❦</span>
+
+                <p>
+                    "O conhecimento permanece,
+                    mesmo quando o tempo passa."
+                </p>
+
+                <span>❦</span>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- RODAPÉ -->
+    <footer>
+
+        <div class="footer-ornamento">
+            ───── ❦ ─────
         </div>
 
-      </div>
+        <h2>Racha Chueiri</h2>
 
-    </div>
-  </section>
-
-  <!-- SIMULATOR SECTION (EVOLUÇÃO E MISSÕES) -->
-  <section id="simulador" class="py-20 relative z-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="text-center max-w-3xl mx-auto mb-12">
-        <h2 class="font-cinzel text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-gold-300 via-amber-400 to-gold-500 uppercase tracking-wider">
-          Simulador de Evolução do Aluno
-        </h2>
-        <p class="font-medieval text-slate-300 text-lg mt-2">
-          "A força de cada aluno é medida por seu nível, e para evoluir é preciso dedicação em duas frentes"
-        </p>
-      </div>
-
-      <!-- Player HUD Bar -->
-      <div class="bg-arcane-800/90 rounded-2xl p-6 gold-border shadow-2xl mb-8">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 items-center">
-          
-          <div class="flex items-center gap-4">
-            <div class="w-14 h-14 rounded-full bg-amber-500/20 border-2 border-gold-400 flex items-center justify-center text-gold-400 font-cinzel font-black text-xl shadow-gold-glow" id="hud-level-circle">
-              1
-            </div>
-            <div>
-              <span class="text-xs font-medieval text-slate-400 uppercase">Nível do Aluno</span>
-              <h4 id="hud-student-name" class="font-cinzel font-bold text-slate-100 text-lg">Valerius de Aethel</h4>
-              <span id="hud-house" class="text-xs text-gold-400">Família Ignis</span>
-            </div>
-          </div>
-
-          <!-- XP Bar -->
-          <div class="md:col-span-2 space-y-1">
-            <div class="flex justify-between text-xs font-medieval">
-              <span class="text-indigo-300"><i class="fa-solid fa-sparkles mr-1"></i> Experiência Acumulada (XP)</span>
-              <span id="hud-xp-text" class="text-gold-300 font-bold">0 / 100 XP</span>
-            </div>
-            <div class="w-full bg-arcane-950 h-3 rounded-full overflow-hidden p-0.5 border border-gold-600/30">
-              <div id="hud-xp-bar" class="bg-gradient-to-r from-indigo-500 via-purple-500 to-gold-400 h-full rounded-full transition-all duration-300" style="width: 0%;"></div>
-            </div>
-          </div>
-
-          <!-- Total Score -->
-          <div class="text-right border-l border-gold-600/20 pl-4 hidden md:block">
-            <span class="text-xs font-medieval text-slate-400 uppercase block">Pontos Contribuídos</span>
-            <span id="hud-total-points" class="font-cinzel font-black text-2xl text-gold-400">0 PTS</span>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- Two Training Fronts Grid -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        
-        <!-- Front 1: Estudo da Magia (À Distância) -->
-        <div class="bg-arcane-900/90 rounded-2xl p-6 sm:p-8 border border-indigo-500/40 shadow-arcane-glow flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between border-b border-indigo-500/30 pb-4 mb-6">
-              <div class="flex items-center gap-3">
-                <div class="p-3 rounded-xl bg-indigo-500/20 text-indigo-400 border border-indigo-500/40">
-                  <i class="fa-solid fa-book-open-reader text-2xl"></i>
-                </div>
-                <div>
-                  <h3 class="font-cinzel font-bold text-xl text-indigo-300">1. Estudo da Magia</h3>
-                  <span class="text-xs font-medieval text-slate-400">Modalidade: Aprendizado Teórico à Distância</span>
-                </div>
-              </div>
-              <span class="px-3 py-1 rounded-full bg-indigo-900/60 text-indigo-300 border border-indigo-500/40 text-xs font-bold">
-                Sussurro de Sabedoria
-              </span>
-            </div>
-
-            <p class="text-xs text-slate-300 leading-relaxed mb-6 italic">
-              "O aprendizado teórico acontece de forma constante, mesmo à distância, como um sussurro de sabedoria que nunca se cala."
-            </p>
-
-            <div class="space-y-3 mb-6">
-              <button onclick="performActivity('study_grimoire')" class="w-full p-4 rounded-xl bg-arcane-800 hover:bg-indigo-900/40 border border-indigo-500/30 hover:border-indigo-400 text-left transition-all flex items-center justify-between group">
-                <div class="flex items-center gap-3">
-                  <i class="fa-solid fa-scroll text-indigo-400 text-lg group-hover:rotate-12 transition-transform"></i>
-                  <div>
-                    <h5 class="font-bold text-sm text-slate-200">Decifrar Grimórios Antigos</h5>
-                    <p class="text-[11px] text-slate-400">Estudo dos rituais de proteção das Montanhas Nebulosas</p>
-                  </div>
-                </div>
-                <span class="text-xs font-bold text-indigo-300 bg-indigo-950 px-2.5 py-1 rounded-lg border border-indigo-800">+15 XP • +5 Sabedoria</span>
-              </button>
-
-              <button onclick="performActivity('study_telepathy')" class="w-full p-4 rounded-xl bg-arcane-800 hover:bg-indigo-900/40 border border-indigo-500/30 hover:border-indigo-400 text-left transition-all flex items-center justify-between group">
-                <div class="flex items-center gap-3">
-                  <i class="fa-solid fa-tower-broadcast text-cyan-400 text-lg group-hover:rotate-12 transition-transform"></i>
-                  <div>
-                    <h5 class="font-bold text-sm text-slate-200">Aula Telepática do Arquimago</h5>
-                    <p class="text-[11px] text-slate-400">Palestra à distância sobre teorias elementares de fogo e gelo</p>
-                  </div>
-                </div>
-                <span class="text-xs font-bold text-indigo-300 bg-indigo-950 px-2.5 py-1 rounded-lg border border-indigo-800">+25 XP • +10 Sabedoria</span>
-              </button>
-
-              <button onclick="performActivity('study_runes')" class="w-full p-4 rounded-xl bg-arcane-800 hover:bg-indigo-900/40 border border-indigo-500/30 hover:border-indigo-400 text-left transition-all flex items-center justify-between group">
-                <div class="flex items-center gap-3">
-                  <i class="fa-solid fa-gem text-purple-400 text-lg group-hover:rotate-12 transition-transform"></i>
-                  <div>
-                    <h5 class="font-bold text-sm text-slate-200">Transcrição de Runas de Vigor</h5>
-                    <p class="text-[11px] text-slate-400">Atividade teórica individual para selamento mágico</p>
-                  </div>
-                </div>
-                <span class="text-xs font-bold text-indigo-300 bg-indigo-950 px-2.5 py-1 rounded-lg border border-indigo-800">+40 XP • +15 Sabedoria</span>
-              </button>
-            </div>
-          </div>
-
-          <div class="pt-4 border-t border-indigo-500/20 flex justify-between items-center text-xs font-medieval text-indigo-300">
-            <span>Nível de Magia Teórica:</span>
-            <strong id="stat-wisdom-val" class="text-sm font-bold text-indigo-200">15 PTS</strong>
-          </div>
-        </div>
-
-        <!-- Front 2: Caça de Monstros (Presencial) -->
-        <div class="bg-arcane-900/90 rounded-2xl p-6 sm:p-8 border border-red-500/40 shadow-2xl flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between border-b border-red-500/30 pb-4 mb-6">
-              <div class="flex items-center gap-3">
-                <div class="p-3 rounded-xl bg-red-500/20 text-red-400 border border-red-500/40">
-                  <i class="fa-solid fa-khanda text-2xl"></i>
-                </div>
-                <div>
-                  <h3 class="font-cinzel font-bold text-xl text-red-300">2. Caça de Monstros</h3>
-                  <span class="text-xs font-medieval text-slate-400">Modalidade: Expedição Presencial de Risco</span>
-                </div>
-              </div>
-              <span class="px-3 py-1 rounded-full bg-red-900/60 text-red-300 border border-red-500/40 text-xs font-bold">
-                Exige Coragem
-              </span>
-            </div>
-
-            <p class="text-xs text-slate-300 leading-relaxed mb-6 italic">
-              "Já a caça exige coragem e presença. Apenas as famílias mais habilidosas e unidas conquistarão o troféu."
-            </p>
-
-            <div class="space-y-3 mb-6">
-              <button onclick="performActivity('hunt_goblin')" class="w-full p-4 rounded-xl bg-arcane-800 hover:bg-red-900/40 border border-red-500/30 hover:border-red-400 text-left transition-all flex items-center justify-between group">
-                <div class="flex items-center gap-3">
-                  <i class="fa-solid fa-ghost text-red-400 text-lg group-hover:scale-110 transition-transform"></i>
-                  <div>
-                    <h5 class="font-bold text-sm text-slate-200">Rastrear Duende das Sombras</h5>
-                    <p class="text-[11px] text-slate-400">Emboscada rápida nas florestas ao redor da escola</p>
-                  </div>
-                </div>
-                <span class="text-xs font-bold text-red-300 bg-red-950 px-2.5 py-1 rounded-lg border border-red-800">+20 XP • +8 Coragem</span>
-              </button>
-
-              <button onclick="performActivity('hunt_manticore')" class="w-full p-4 rounded-xl bg-arcane-800 hover:bg-red-900/40 border border-red-500/30 hover:border-red-400 text-left transition-all flex items-center justify-between group">
-                <div class="flex items-center gap-3">
-                  <i class="fa-solid fa-paw text-amber-500 text-lg group-hover:scale-110 transition-transform"></i>
-                  <div>
-                    <h5 class="font-bold text-sm text-slate-200">Enfrentar Quimera Nebulosa</h5>
-                    <p class="text-[11px] text-slate-400">Combate presencial em equipe nos picos das Montanhas</p>
-                  </div>
-                </div>
-                <span class="text-xs font-bold text-red-300 bg-red-950 px-2.5 py-1 rounded-lg border border-red-800">+35 XP • +12 Coragem</span>
-              </button>
-
-              <button onclick="performActivity('hunt_basilisk')" class="w-full p-4 rounded-xl bg-arcane-800 hover:bg-red-900/40 border border-red-500/30 hover:border-red-400 text-left transition-all flex items-center justify-between group">
-                <div class="flex items-center gap-3">
-                  <i class="fa-solid fa-skull text-emerald-400 text-lg group-hover:scale-110 transition-transform"></i>
-                  <div>
-                    <h5 class="font-bold text-sm text-slate-200">Desafiar Basilisco do Vale</h5>
-                    <p class="text-[11px] text-slate-400">Batalha épica de alto risco com recompensa lendária</p>
-                  </div>
-                </div>
-                <span class="text-xs font-bold text-red-300 bg-red-950 px-2.5 py-1 rounded-lg border border-red-800">+50 XP • +20 Coragem</span>
-              </button>
-            </div>
-          </div>
-
-          <div class="pt-4 border-t border-red-500/20 flex justify-between items-center text-xs font-medieval text-red-300">
-            <span>Nível de Combate Presencial:</span>
-            <strong id="stat-courage-val" class="text-sm font-bold text-red-200">15 PTS</strong>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Adventure Quest Log (Diário de Bordo Mágico) -->
-      <div class="mt-8 bg-arcane-950 rounded-2xl p-6 border border-gold-600/30">
-        <div class="flex items-center justify-between mb-4 border-b border-gold-600/20 pb-2">
-          <h4 class="font-cinzel text-sm font-bold text-gold-400 flex items-center gap-2">
-            <i class="fa-solid fa-list-check"></i> Diário de Atividades do Aprendiz
-          </h4>
-          <button onclick="clearQuestLog()" class="text-[11px] text-slate-400 hover:text-gold-300 transition-colors">Limpar Registro</button>
-        </div>
-        <div id="quest-log-container" class="space-y-2 h-36 overflow-y-auto font-mono text-xs text-slate-300 pr-2">
-          <div class="text-slate-500 italic">[00:00] Matrícula realizada na escola A Rocha Chueiri. Aguardando primeira instrução...</div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- BESTIARY SECTION -->
-  <section id="bestiario" class="py-20 bg-arcane-800/40 relative z-20 border-t border-gold-600/20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="text-center max-w-3xl mx-auto mb-14">
-        <h2 class="font-cinzel text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-gold-300 via-amber-400 to-gold-500 uppercase tracking-wider">
-          Bestiário Mágico & Companheiros
-        </h2>
-        <p class="font-medieval text-slate-300 text-lg mt-2">
-          "Jovens de diversas raças aprendem magia ao lado de criaturas mágicas como grifos, fênixes e dragões."
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        
-        <!-- Creature 1: Grifo -->
-        <div class="bg-arcane-900 rounded-2xl p-6 border border-gold-600/30 hover:border-gold-400 transition-all hover:-translate-y-2 group shadow-xl flex flex-col justify-between">
-          <div>
-            <div class="w-full h-44 rounded-xl bg-gradient-to-b from-cyan-950/60 to-arcane-950 border border-cyan-500/30 flex items-center justify-center mb-4 relative overflow-hidden">
-              <i class="fa-solid fa-feather text-6xl text-cyan-400 group-hover:scale-110 transition-transform duration-300"></i>
-              <span class="absolute top-3 right-3 px-2 py-0.5 rounded bg-cyan-950 border border-cyan-500/40 text-[10px] text-cyan-300 font-mono">Guarda Aérea</span>
-            </div>
-            <h3 class="font-cinzel font-bold text-xl text-gold-300 mb-1">Grifos das Montanhas</h3>
-            <p class="text-xs text-slate-300 leading-relaxed mb-4">
-              Metade águia e metade leão, os grifos são os protetores dos cumes nebulosos. Oferecem excelente mobilidade para patrulhas e batedores da escola.
-            </p>
-          </div>
-          <div class="border-t border-gold-600/20 pt-3 space-y-1.5 text-xs">
-            <div class="flex justify-between text-slate-400"><span>Velocidade:</span> <strong class="text-cyan-300">95%</strong></div>
-            <div class="flex justify-between text-slate-400"><span>Lealdade:</span> <strong class="text-cyan-300">Alta</strong></div>
-          </div>
-        </div>
-
-        <!-- Creature 2: Fênix -->
-        <div class="bg-arcane-900 rounded-2xl p-6 border border-gold-600/30 hover:border-gold-400 transition-all hover:-translate-y-2 group shadow-xl flex flex-col justify-between">
-          <div>
-            <div class="w-full h-44 rounded-xl bg-gradient-to-b from-amber-950/60 to-arcane-950 border border-amber-500/30 flex items-center justify-center mb-4 relative overflow-hidden">
-              <i class="fa-solid fa-fire-flame-curved text-6xl text-amber-400 group-hover:scale-110 transition-transform duration-300"></i>
-              <span class="absolute top-3 right-3 px-2 py-0.5 rounded bg-amber-950 border border-amber-500/40 text-[10px] text-amber-300 font-mono">Chama Eterna</span>
-            </div>
-            <h3 class="font-cinzel font-bold text-xl text-gold-300 mb-1">Fênixes Solares</h3>
-            <p class="text-xs text-slate-300 leading-relaxed mb-4">
-              Aves místicas de puro fogo vital. Suas penas contêm propriedades curativas e sua presença intensifica o aprendizado de feitiços de luz e calor.
-            </p>
-          </div>
-          <div class="border-t border-gold-600/20 pt-3 space-y-1.5 text-xs">
-            <div class="flex justify-between text-slate-400"><span>Aura Curativa:</span> <strong class="text-amber-300">100%</strong></div>
-            <div class="flex justify-between text-slate-400"><span>Ressurreição:</span> <strong class="text-amber-300">Lendária</strong></div>
-          </div>
-        </div>
-
-        <!-- Creature 3: Dragão -->
-        <div class="bg-arcane-900 rounded-2xl p-6 border border-gold-600/30 hover:border-gold-400 transition-all hover:-translate-y-2 group shadow-xl flex flex-col justify-between">
-          <div>
-            <div class="w-full h-44 rounded-xl bg-gradient-to-b from-red-950/60 to-arcane-950 border border-red-500/30 flex items-center justify-center mb-4 relative overflow-hidden">
-              <i class="fa-solid fa-dragon text-6xl text-red-500 group-hover:scale-110 transition-transform duration-300"></i>
-              <span class="absolute top-3 right-3 px-2 py-0.5 rounded bg-red-950 border border-red-500/40 text-[10px] text-red-300 font-mono">Poder Bruto</span>
-            </div>
-            <h3 class="font-cinzel font-bold text-xl text-gold-300 mb-1">Dragões Ancestrais</h3>
-            <p class="text-xs text-slate-300 leading-relaxed mb-4">
-              Soberanos dos céus e guardiões do conhecimento elemental. Apenas aprendizes com imensa coragem presencial conseguem firmar um pacto leal com eles.
-            </p>
-          </div>
-          <div class="border-t border-gold-600/20 pt-3 space-y-1.5 text-xs">
-            <div class="flex justify-between text-slate-400"><span>Dano Elemental:</span> <strong class="text-red-400">98%</strong></div>
-            <div class="flex justify-between text-slate-400"><span>Defesa de Escamas:</span> <strong class="text-red-400">Máxima</strong></div>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ANNUAL COMPETITION & LEADERBOARD SECTION -->
-  <section id="competicao" class="py-20 relative z-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="text-center max-w-3xl mx-auto mb-14">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold-500/10 border border-gold-500/30 text-gold-400 text-xs font-medieval mb-3">
-          <i class="fa-solid fa-trophy"></i> Competição Anual
-        </div>
-        <h2 class="font-cinzel text-3xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-gold-300 via-amber-400 to-gold-500 uppercase tracking-wider">
-          O Troféu do Arquimago
-        </h2>
-        <p class="font-medieval text-slate-300 text-lg mt-2">
-          "A rivalidade está acirrada, e apenas as famílias mais habilidosas e unidas conquistarão o troféu."
-        </p>
-      </div>
-
-      <!-- Trophy Spotlight Card -->
-      <div class="bg-gradient-to-b from-arcane-800 to-arcane-950 rounded-3xl p-8 gold-border shadow-gold-glow mb-12 max-w-4xl mx-auto text-center relative overflow-hidden">
-        <div class="absolute -top-12 -left-12 w-48 h-48 bg-gold-500/10 rounded-full blur-2xl pointer-events-none"></div>
-        
-        <i class="fa-solid fa-trophy text-6xl sm:text-7xl text-gradient text-gold-400 animate-pulse-glow mb-4 block"></i>
-        
-        <h3 class="font-cinzel text-2xl sm:text-3xl font-extrabold text-gold-300 mb-2">
-          Grande Torneio das Famílias Mágicas
-        </h3>
-        <p class="text-xs sm:text-sm text-slate-300 max-w-2xl mx-auto mb-6">
-          Cada tarefa concluída no estudo teórico ou na caça presencial envia pontos diretos para a pontuação da sua Família na escola!
+        <p>
+            Escola Mágica Ancestral
         </p>
 
-        <!-- Dynamic House Ranking Bars -->
-        <div class="space-y-4 text-left max-w-2xl mx-auto">
-          
-          <!-- House 1: Família Ignis -->
-          <div>
-            <div class="flex justify-between text-xs font-bold font-medieval mb-1">
-              <span class="text-red-400"><i class="fa-solid fa-fire mr-1"></i> Família Ignis (Fogo & Coragem)</span>
-              <span id="score-ignis" class="text-gold-300">1,450 PTS</span>
-            </div>
-            <div class="w-full bg-arcane-950 h-3 rounded-full overflow-hidden border border-red-500/30">
-              <div id="bar-ignis" class="bg-red-600 h-full transition-all duration-500" style="width: 75%;"></div>
-            </div>
-          </div>
+        <small>
+            Registro das Montanhas Nebulosas
+        </small>
 
-          <!-- House 2: Família Astralis -->
-          <div>
-            <div class="flex justify-between text-xs font-bold font-medieval mb-1">
-              <span class="text-indigo-300"><i class="fa-solid fa-star mr-1"></i> Família Astralis (Estrelas & Sabedoria)</span>
-              <span id="score-astralis" class="text-gold-300">1,380 PTS</span>
-            </div>
-            <div class="w-full bg-arcane-950 h-3 rounded-full overflow-hidden border border-indigo-500/30">
-              <div id="bar-astralis" class="bg-indigo-600 h-full transition-all duration-500" style="width: 70%;"></div>
-            </div>
-          </div>
+    </footer>
 
-          <!-- House 3: Família Sylvanus -->
-          <div>
-            <div class="flex justify-between text-xs font-bold font-medieval mb-1">
-              <span class="text-emerald-400"><i class="fa-solid fa-tree mr-1"></i> Família Sylvanus (Natureza & Cura)</span>
-              <span id="score-sylvanus" class="text-gold-300">1,210 PTS</span>
-            </div>
-            <div class="w-full bg-arcane-950 h-3 rounded-full overflow-hidden border border-emerald-500/30">
-              <div id="bar-sylvanus" class="bg-emerald-600 h-full transition-all duration-500" style="width: 62%;"></div>
-            </div>
-          </div>
 
-          <!-- House 4: Família Umbra -->
-          <div>
-            <div class="flex justify-between text-xs font-bold font-medieval mb-1">
-              <span class="text-purple-400"><i class="fa-solid fa-moon mr-1"></i> Família Umbra (Sombras & Feitiço)</span>
-              <span id="score-umbra" class="text-gold-300">1,150 PTS</span>
-            </div>
-            <div class="w-full bg-arcane-950 h-3 rounded-full overflow-hidden border border-purple-500/30">
-              <div id="bar-umbra" class="bg-purple-600 h-full transition-all duration-500" style="width: 58%;"></div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer id="contato" class="bg-arcane-950 border-t border-gold-600/30 py-12 relative z-20 text-slate-400 text-xs">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-        
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full bg-gold-600/20 border border-gold-400 flex items-center justify-center text-gold-400">
-            <i class="fa-solid fa-hat-wizard text-lg"></i>
-          </div>
-          <div>
-            <span class="font-cinzel font-bold text-slate-200 text-base block">A Rocha Chueiri</span>
-            <span class="font-medieval text-slate-400">Escola Mágica Ancestral das Montanhas Nebulosas</span>
-          </div>
-        </div>
-
-        <div class="flex items-center gap-6 font-medieval text-sm">
-          <a href="#prefacio" class="hover:text-gold-400 transition-colors">Prefácio</a>
-          <a href="#ficha" class="hover:text-gold-400 transition-colors">Matrícula</a>
-          <a href="#simulador" class="hover:text-gold-400 transition-colors">Missões</a>
-          <a href="#bestiario" class="hover:text-gold-400 transition-colors">Bestiário</a>
-        </div>
-
-        <div class="text-center md:text-right">
-          <p>© 2026 A Rocha Chueiri • Todos os direitos mágicos reservados.</p>
-          <p class="text-[10px] text-slate-500 mt-1">Supervisionado pelo Arquimago Professor</p>
-        </div>
-
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    /* ==========================================================================
-       1. GAME STATE & CHARACTER DATA
-       ========================================================================== */
-    const gameState = {
-      name: "Valerius de Aethel",
-      house: "Família Ignis",
-      race: "Humano",
-      creature: "Grifo de Prata",
-      creatureDesc: "Agilidade nos Céus & Guarda Leal",
-      creatureIcon: "fa-feather",
-      level: 1,
-      xp: 0,
-      xpNext: 100,
-      wisdom: 15,
-      courage: 15,
-      soundEnabled: true,
-      houseScores: {
-        "Família Ignis": 1450,
-        "Família Astralis": 1380,
-        "Família Sylvanus": 1210,
-        "Família Umbra": 1150
-      }
-    };
-
-    /* ==========================================================================
-       2. WEB AUDIO API SYNTHESIZER (SOUND EFFECTS)
-       ========================================================================== */
-    let audioCtx = null;
-
-    function initAudio() {
-      if (!audioCtx) {
-        const AudioContext = window.AudioContext || window.webkitAudioContext;
-        audioCtx = new AudioContext();
-      }
-    }
-
-    function playSound(type) {
-      if (!gameState.soundEnabled) return;
-      initAudio();
-      if (audioCtx.state === 'suspended') {
-        audioCtx.resume();
-      }
-
-      const now = audioCtx.currentTime;
-
-      if (type === 'magic') {
-        // High sparkle chime for study
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(587.33, now); // D5
-        osc.frequency.exponentialRampToValueAtTime(1174.66, now + 0.3); // D6
-        gain.gain.setValueAtTime(0.15, now);
-        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.35);
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
-        osc.start(now);
-        osc.stop(now + 0.35);
-      } else if (type === 'hunt') {
-        // Sword slash / combat impact
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-        osc.type = 'sawtooth';
-        osc.frequency.setValueAtTime(220, now);
-        osc.frequency.exponentialRampToValueAtTime(60, now + 0.25);
-        gain.gain.setValueAtTime(0.2, now);
-        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.25);
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
-        osc.start(now);
-        osc.stop(now + 0.25);
-      } else if (type === 'levelup') {
-        // Triumph Fanfare Triad
-        const freqs = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
-        freqs.forEach((freq, idx) => {
-          const osc = audioCtx.createOscillator();
-          const gain = audioCtx.createGain();
-          osc.type = 'triangle';
-          osc.frequency.setValueAtTime(freq, now + idx * 0.08);
-          gain.gain.setValueAtTime(0.2, now + idx * 0.08);
-          gain.gain.exponentialRampToValueAtTime(0.01, now + idx * 0.08 + 0.4);
-          osc.connect(gain);
-          gain.connect(audioCtx.destination);
-          osc.start(now + idx * 0.08);
-          osc.stop(now + idx * 0.08 + 0.4);
-        });
-      }
-    }
-
-    // Sound toggle listener
-    document.getElementById('sound-toggle-btn').addEventListener('click', () => {
-      gameState.soundEnabled = !gameState.soundEnabled;
-      const icon = document.getElementById('sound-icon');
-      if (gameState.soundEnabled) {
-        icon.className = 'fa-solid fa-volume-high text-sm';
-        showToast('Som ativado!', 'Efeitos sonoros mágicos ligados.', 'indigo');
-        playSound('magic');
-      } else {
-        icon.className = 'fa-solid fa-volume-xmark text-sm';
-        showToast('Som desativado', 'Silêncio nas Montanhas Nebulosas.', 'amber');
-      }
-    });
-
-    /* ==========================================================================
-       3. CHARACTER CREATOR FUNCTIONS
-       ========================================================================== */
-    function selectRace(raceName, bonus, icon) {
-      gameState.race = raceName;
-      document.querySelectorAll('.race-btn').forEach(btn => {
-        btn.classList.remove('border-gold-400', 'text-gold-300');
-        btn.classList.add('text-slate-300');
-      });
-      event.currentTarget.classList.add('border-gold-400', 'text-gold-300');
-      event.currentTarget.classList.remove('text-slate-300');
-      playSound('magic');
-    }
-
-    function selectCreature(name, desc, iconClass) {
-      gameState.creature = name;
-      gameState.creatureDesc = desc;
-      gameState.creatureIcon = iconClass;
-      
-      document.querySelectorAll('.creature-btn').forEach(btn => {
-        btn.classList.remove('border-gold-400', 'text-gold-300');
-        btn.classList.add('text-slate-300');
-      });
-      event.currentTarget.classList.add('border-gold-400', 'text-gold-300');
-      event.currentTarget.classList.remove('text-slate-300');
-      playSound('magic');
-    }
-
-    function updateFocusDistribution(val) {
-      const studyVal = parseInt(val);
-      const huntVal = 100 - studyVal;
-      document.getElementById('hunt-focus-val').innerText = `${huntVal}% Foco em Caça`;
-      
-      const desc = document.getElementById('stat-balance-desc');
-      if (studyVal > 65) desc.innerText = "Foco Teórico";
-      else if (huntVal > 65) desc.innerText = "Foco em Caça";
-      else desc.innerText = "Equilibrado";
-    }
-
-    function generateStudentCard() {
-      const nameInput = document.getElementById('char-name').value.trim();
-      const houseInput = document.getElementById('char-house').value;
-
-      if (nameInput) gameState.name = nameInput;
-      gameState.house = houseInput;
-
-      // Update Card DOM
-      document.getElementById('card-name').innerText = gameState.name;
-      document.getElementById('card-house').innerText = gameState.house;
-      document.getElementById('card-race').innerText = gameState.race;
-      document.getElementById('card-creature').innerText = gameState.creature;
-      document.getElementById('card-creature-icon').className = `fa-solid ${gameState.creatureIcon} text-amber-800 text-lg`;
-
-      // Update HUD DOM
-      document.getElementById('hud-student-name').innerText = gameState.name;
-      document.getElementById('hud-house').innerText = gameState.house;
-
-      playSound('levelup');
-      showToast('Ficha Emitida!', `Aprendiz ${gameState.name} registrado na ${gameState.house}.`, 'gold');
-    }
-
-    /* ==========================================================================
-       4. SIMULATOR & QUEST SYSTEM
-       ========================================================================== */
-    function performActivity(type) {
-      let xpGain = 0;
-      let wisdomGain = 0;
-      let courageGain = 0;
-      let activityName = "";
-      let category = "";
-
-      switch(type) {
-        case 'study_grimoire':
-          xpGain = 15; wisdomGain = 5; activityName = "Estudo de Grimórios Antigos"; category = "Estudo Teórico";
-          playSound('magic');
-          break;
-        case 'study_telepathy':
-          xpGain = 25; wisdomGain = 10; activityName = "Aula Telepática do Arquimago"; category = "Estudo Teórico";
-          playSound('magic');
-          break;
-        case 'study_runes':
-          xpGain = 40; wisdomGain = 15; activityName = "Transcrição de Runas"; category = "Estudo Teórico";
-          playSound('magic');
-          break;
-        case 'hunt_goblin':
-          xpGain = 20; courageGain = 8; activityName = "Rastreio de Duende das Sombras"; category = "Caça Presencial";
-          playSound('hunt');
-          break;
-        case 'hunt_manticore':
-          xpGain = 35; courageGain = 12; activityName = "Combate contra Quimera"; category = "Caça Presencial";
-          playSound('hunt');
-          break;
-        case 'hunt_basilisk':
-          xpGain = 50; courageGain = 20; activityName = "Desafio ao Basilisco do Vale"; category = "Caça Presencial";
-          playSound('hunt');
-          break;
-      }
-
-      // Apply Gains
-      gameState.xp += xpGain;
-      gameState.wisdom += wisdomGain;
-      gameState.courage += courageGain;
-
-      // Contribute to House
-      gameState.houseScores[gameState.house] = (gameState.houseScores[gameState.house] || 1000) + xpGain;
-
-      // Check Level Up
-      let leveledUp = false;
-      if (gameState.xp >= gameState.xpNext) {
-        gameState.level++;
-        gameState.xp -= gameState.xpNext;
-        gameState.xpNext = Math.floor(gameState.xpNext * 1.5);
-        leveledUp = true;
-        playSound('levelup');
-        showToast('NÍVEL AUMENTOU!', `Você alcançou o Nível ${gameState.level} na Rocha Chueiri!`, 'gold');
-      }
-
-      // Update HUD & UI
-      updateUI();
-
-      // Log activity
-      const timeStr = new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-      addLogEntry(`[${timeStr}] [${category}] ${activityName} concluído! (+${xpGain} XP, +${wisdomGain} Sabedoria, +${courageGain} Coragem)`);
-
-      if (!leveledUp) {
-        showToast(activityName, `Concluído com sucesso! +${xpGain} XP adicionados.`, category === "Estudo Teórico" ? 'indigo' : 'red');
-      }
-    }
-
-    function updateUI() {
-      // HUD Level & XP
-      document.getElementById('hud-level-circle').innerText = gameState.level;
-      document.getElementById('card-level').innerText = gameState.level;
-      document.getElementById('hud-xp-text').innerText = `${gameState.xp} / ${gameState.xpNext} XP`;
-      
-      const xpPercent = Math.min(100, Math.floor((gameState.xp / gameState.xpNext) * 100));
-      document.getElementById('hud-xp-bar').style.width = `${xpPercent}%`;
-
-      // Wisdom & Courage
-      document.getElementById('stat-wisdom-val').innerText = `${gameState.wisdom} PTS`;
-      document.getElementById('card-wisdom').innerText = `${gameState.wisdom} PTS`;
-      document.getElementById('card-wisdom-bar').style.width = `${Math.min(100, gameState.wisdom * 2)}%`;
-
-      document.getElementById('stat-courage-val').innerText = `${gameState.courage} PTS`;
-      document.getElementById('card-courage').innerText = `${gameState.courage} PTS`;
-      document.getElementById('card-courage-bar').style.width = `${Math.min(100, gameState.courage * 2)}%`;
-
-      // Total Score
-      const totalScore = (gameState.wisdom * 10) + (gameState.courage * 10) + (gameState.level * 100);
-      document.getElementById('hud-total-points').innerText = `${totalScore} PTS`;
-
-      // House Leaderboard Update
-      updateLeaderboard();
-    }
-
-    function updateLeaderboard() {
-      const maxScore = Math.max(...Object.values(gameState.houseScores));
-      
-      const houses = [
-        { name: "Família Ignis", scoreId: "score-ignis", barId: "bar-ignis" },
-        { name: "Família Astralis", scoreId: "score-astralis", barId: "bar-astralis" },
-        { name: "Família Sylvanus", scoreId: "score-sylvanus", barId: "bar-sylvanus" },
-        { name: "Família Umbra", scoreId: "score-umbra", barId: "bar-umbra" }
-      ];
-
-      houses.forEach(h => {
-        const score = gameState.houseScores[h.name];
-        document.getElementById(h.scoreId).innerText = `${score.toLocaleString()} PTS`;
-        const pct = Math.min(100, Math.floor((score / (maxScore * 1.1)) * 100));
-        document.getElementById(h.barId).style.width = `${pct}%`;
-      });
-    }
-
-    function addLogEntry(msg) {
-      const container = document.getElementById('quest-log-container');
-      const entry = document.createElement('div');
-      entry.className = "text-amber-300 font-sans text-xs border-l-2 border-gold-500/50 pl-2 py-0.5 animate-pulse";
-      entry.innerText = msg;
-      container.prepend(entry);
-    }
-
-    function clearQuestLog() {
-      document.getElementById('quest-log-container').innerHTML = '<div class="text-slate-500 italic">[Registro limpo pelo aluno]</div>';
-    }
-
-    /* ==========================================================================
-       5. TOAST NOTIFICATIONS
-       ========================================================================== */
-    function showToast(title, body, type = 'gold') {
-      const container = document.getElementById('toast-container');
-      const toast = document.createElement('div');
-      
-      let borderClass = 'border-gold-500 text-gold-300';
-      if (type === 'indigo') borderClass = 'border-indigo-500 text-indigo-300';
-      if (type === 'red') borderClass = 'border-red-500 text-red-300';
-
-      toast.className = `toast-card bg-arcane-900 border ${borderClass} px-4 py-3 rounded-xl shadow-2xl flex items-center gap-3 max-w-sm`;
-      toast.innerHTML = `
-        <div class="p-2 rounded-lg bg-arcane-950">
-          <i class="fa-solid fa-wand-magic-sparkles text-lg"></i>
-        </div>
-        <div>
-          <h5 class="font-cinzel font-bold text-xs uppercase tracking-wider">${title}</h5>
-          <p class="text-[11px] text-slate-300">${body}</p>
-        </div>
-      `;
-
-      container.appendChild(toast);
-      setTimeout(() => {
-        toast.style.opacity = '0';
-        toast.style.transform = 'translateX(100%)';
-        toast.style.transition = 'all 0.4s ease';
-        setTimeout(() => toast.remove(), 400);
-      }, 3500);
-    }
-
-    /* ==========================================================================
-       6. MAGIC PARTICLES CANVAS
-       ========================================================================== */
-    const canvas = document.getElementById('magic-canvas');
-    const ctx = canvas.getContext('2d');
-    let particles = [];
-
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-
-    class Particle {
-      constructor() {
-        this.reset();
-      }
-      reset() {
-        this.x = Math.random() * canvas.width;
-        this.y = canvas.height + Math.random() * 20;
-        this.size = Math.random() * 2.5 + 0.8;
-        this.speedY = Math.random() * 0.8 + 0.3;
-        this.speedX = (Math.random() - 0.5) * 0.4;
-        this.alpha = Math.random() * 0.7 + 0.3;
-        // Golden / Mana Cyan colors
-        this.color = Math.random() > 0.4 ? `rgba(234, 179, 8, ${this.alpha})` : `rgba(167, 139, 250, ${this.alpha})`;
-      }
-      update() {
-        this.y -= this.speedY;
-        this.x += this.speedX;
-        if (this.y < -10 || this.x < -10 || this.x > canvas.width + 10) {
-          this.reset();
-        }
-      }
-      draw() {
-        ctx.fillStyle = this.color;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    }
-
-    function initParticles() {
-      particles = [];
-      const count = Math.min(70, Math.floor(window.innerWidth / 20));
-      for (let i = 0; i < count; i++) {
-        const p = new Particle();
-        p.y = Math.random() * canvas.height;
-        particles.push(p);
-      }
-    }
-
-    function animateParticles() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach(p => {
-        p.update();
-        p.draw();
-      });
-      requestAnimationFrame(animateParticles);
-    }
-
-    window.onload = function() {
-      initParticles();
-      animateParticles();
-      updateUI();
-    };
-  </script>
+    <script src="script.js"></script>
 
 </body>
 </html>

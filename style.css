@@ -1,0 +1,795 @@
+/* =========================================
+   CONFIGURAÇÕES GERAIS
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #d8c49c;
+    color: #302519;
+    font-family: "EB Garamond", Georgia, serif;
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   TEXTURA DO PAPEL
+========================================= */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(255,255,255,0.25),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 80% 70%,
+            rgba(70,40,10,0.08),
+            transparent 35%
+        );
+
+    z-index: 10;
+}
+
+.grain {
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: 0.13;
+
+    background-image:
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 3px,
+            rgba(50,30,10,0.05) 4px
+        );
+
+    z-index: 11;
+}
+
+
+/* =========================================
+   CABEÇALHO
+========================================= */
+
+.cabecalho {
+    min-height: 300px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 70px;
+
+    text-align: center;
+
+    padding: 50px 20px;
+
+    background:
+        linear-gradient(
+            rgba(42,31,20,0.94),
+            rgba(57,40,23,0.96)
+        );
+
+    color: #d9bd7a;
+
+    border-bottom: 4px double #b19358;
+}
+
+.titulo-header span {
+    display: block;
+
+    font-size: 14px;
+    letter-spacing: 4px;
+
+    color: #a99570;
+
+    text-transform: uppercase;
+}
+
+.titulo-header h1 {
+    font-family: "Cinzel", serif;
+
+    font-size: clamp(42px, 7vw, 82px);
+
+    letter-spacing: 4px;
+
+    margin: 10px 0;
+
+    color: #d9bd7a;
+
+    text-shadow:
+        2px 2px 0 #1b140d;
+}
+
+.titulo-header p {
+    font-size: 20px;
+
+    font-style: italic;
+
+    color: #c5b38e;
+}
+
+.brasao,
+.ornamento {
+    font-size: 55px;
+    color: #ad8c4f;
+}
+
+
+/* =========================================
+   MENU
+========================================= */
+
+.menu {
+    position: sticky;
+    top: 0;
+
+    z-index: 20;
+
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    gap: 35px;
+
+    padding: 14px;
+
+    background: #292017;
+
+    border-bottom: 1px solid #967643;
+}
+
+.menu a {
+    color: #d8c394;
+
+    text-decoration: none;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 13px;
+
+    letter-spacing: 1px;
+
+    transition: 0.3s;
+}
+
+.menu a:hover {
+    color: #e7ca87;
+    transform: translateY(-2px);
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero {
+    min-height: 650px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 80px 20px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            rgba(219,199,157,0.91),
+            rgba(205,181,133,0.94)
+        );
+
+    border-bottom: 1px solid #80653a;
+}
+
+.hero-conteudo {
+    max-width: 850px;
+
+    padding: 70px 50px;
+
+    border: 1px solid #80653a;
+
+    box-shadow:
+        0 0 0 10px rgba(126,99,53,0.08),
+        inset 0 0 50px rgba(86,55,20,0.12);
+
+    background: rgba(232,215,175,0.35);
+}
+
+.pequeno-titulo,
+.etiqueta {
+    font-family: "Cinzel", serif;
+
+    letter-spacing: 4px;
+
+    font-size: 12px;
+
+    color: #71562c;
+}
+
+.hero h2 {
+    font-family: "Cinzel", serif;
+
+    font-size: clamp(32px, 5vw, 55px);
+
+    line-height: 1.3;
+
+    font-weight: 500;
+
+    margin: 20px 0;
+
+    color: #392b1b;
+}
+
+.hero p {
+    max-width: 650px;
+
+    margin: 20px auto;
+
+    font-size: 19px;
+}
+
+.linha-ornamental {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    max-width: 400px;
+
+    margin: 25px auto;
+
+    color: #806536;
+}
+
+.linha-ornamental::before,
+.linha-ornamental::after {
+    content: "";
+
+    height: 1px;
+
+    flex: 1;
+
+    background: #806536;
+}
+
+#btnLer {
+    margin-top: 20px;
+
+    padding: 14px 30px;
+
+    border: 1px solid #73572d;
+
+    background: #44331f;
+
+    color: #e5cf9c;
+
+    font-family: "Cinzel", serif;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+#btnLer:hover {
+    background: #66502d;
+    transform: translateY(-2px);
+}
+
+
+/* =========================================
+   PÁGINAS
+========================================= */
+
+.pagina {
+    position: relative;
+
+    max-width: 1000px;
+
+    margin: 70px auto;
+
+    padding: 80px 90px;
+
+    background: #e6d4a9;
+
+    border: 1px solid #927644;
+
+    box-shadow:
+        0 10px 30px rgba(60,40,15,0.18);
+
+    overflow: hidden;
+}
+
+.numero-pagina {
+    position: absolute;
+
+    top: 25px;
+    right: 35px;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 13px;
+
+    color: #80653b;
+}
+
+.titulo-secao {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 30px;
+
+    text-align: center;
+
+    margin-bottom: 50px;
+}
+
+.titulo-secao p {
+    font-family: "Cinzel", serif;
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    color: #80643a;
+
+    text-transform: uppercase;
+}
+
+.titulo-secao h2 {
+    font-family: "Cinzel", serif;
+
+    font-size: 38px;
+
+    font-weight: 500;
+}
+
+.ornamento-lateral {
+    color: #967342;
+
+    font-size: 30px;
+}
+
+
+/* =========================================
+   TEXTO DO PREFÁCIO
+========================================= */
+
+.texto-prefacio {
+    max-width: 750px;
+
+    margin: auto;
+
+    text-align: justify;
+
+    font-size: 19px;
+}
+
+.texto-prefacio p {
+    margin-bottom: 25px;
+}
+
+.letra-capitular {
+    float: left;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 75px !important;
+
+    line-height: 0.8;
+
+    margin-right: 12px;
+
+    color: #654a26;
+}
+
+
+/* =========================================
+   BLOCO ESCURO
+========================================= */
+
+.bloco-escuro {
+    padding: 100px 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #30261b,
+            #463521
+        );
+
+    color: #d7c49b;
+
+    border-top: 4px double #907342;
+    border-bottom: 4px double #907342;
+}
+
+.conteudo-limitado {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.bloco-escuro h2,
+.bloco-evolucao h2 {
+    font-family: "Cinzel", serif;
+
+    font-size: 45px;
+
+    font-weight: 500;
+
+    margin: 10px 0 20px;
+}
+
+.linha-dourada {
+    width: 100px;
+
+    height: 1px;
+
+    background: #a98b51;
+
+    margin-bottom: 30px;
+}
+
+.descricao {
+    max-width: 700px;
+
+    font-size: 19px;
+
+    margin-bottom: 50px;
+}
+
+
+/* =========================================
+   CARDS
+========================================= */
+
+.cards {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 25px;
+}
+
+.card {
+    padding: 35px 25px;
+
+    border: 1px solid #75603d;
+
+    background: rgba(0,0,0,0.12);
+
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+
+    background: rgba(255,255,255,0.05);
+
+    border-color: #ad9058;
+}
+
+.icone {
+    font-size: 35px;
+
+    color: #b4965b;
+
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    font-family: "Cinzel", serif;
+
+    font-size: 22px;
+
+    color: #dfca9a;
+
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #c7b693;
+}
+
+
+/* =========================================
+   COMPETIÇÃO
+========================================= */
+
+.competicao {
+    background: #dec99b;
+}
+
+.competicao-conteudo {
+    display: grid;
+
+    grid-template-columns: 2fr 1fr;
+
+    gap: 60px;
+
+    align-items: center;
+}
+
+.competicao .texto {
+    font-size: 19px;
+
+    text-align: justify;
+}
+
+.competicao .texto p {
+    margin-bottom: 20px;
+}
+
+.trofeu {
+    text-align: center;
+
+    padding: 40px 25px;
+
+    border: 1px solid #927546;
+
+    background: rgba(100,70,25,0.08);
+}
+
+.trofeu-simbolo {
+    font-size: 65px;
+
+    color: #765a2c;
+
+    margin-bottom: 15px;
+}
+
+.trofeu h3 {
+    font-family: "Cinzel", serif;
+
+    font-size: 25px;
+
+    margin-bottom: 10px;
+}
+
+
+/* =========================================
+   EVOLUÇÃO
+========================================= */
+
+.bloco-evolucao {
+    padding: 100px 20px;
+
+    background: #c7b083;
+
+    border-top: 1px solid #8c7042;
+}
+
+.caminhos {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 30px;
+
+    margin-top: 50px;
+}
+
+.caminho {
+    display: flex;
+
+    gap: 25px;
+
+    padding: 30px;
+
+    border: 1px solid #80643a;
+
+    background: rgba(235,218,177,0.35);
+}
+
+.numero {
+    min-width: 55px;
+
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #80643a;
+
+    font-family: "Cinzel", serif;
+
+    color: #604925;
+}
+
+.caminho h3 {
+    font-family: "Cinzel", serif;
+
+    font-size: 21px;
+
+    margin-bottom: 10px;
+}
+
+.caminho p {
+    font-size: 17px;
+}
+
+
+/* =========================================
+   FINAL
+========================================= */
+
+.final {
+    padding: 100px 20px;
+
+    text-align: center;
+
+    background: #dbc496;
+}
+
+.final-moldura {
+    max-width: 750px;
+
+    margin: auto;
+
+    padding: 50px;
+
+    border-top: 1px solid #80633b;
+    border-bottom: 1px solid #80633b;
+}
+
+.final-moldura span {
+    color: #82653a;
+
+    font-size: 25px;
+}
+
+.final-moldura p {
+    margin: 20px 0;
+
+    font-size: 28px;
+
+    font-style: italic;
+
+    color: #4c3923;
+}
+
+
+/* =========================================
+   RODAPÉ
+========================================= */
+
+footer {
+    padding: 70px 20px;
+
+    text-align: center;
+
+    background: #292017;
+
+    color: #b9a57d;
+
+    border-top: 4px double #927342;
+}
+
+.footer-ornamento {
+    color: #a68a54;
+
+    margin-bottom: 20px;
+}
+
+footer h2 {
+    font-family: "Cinzel", serif;
+
+    color: #d0b87e;
+
+    font-size: 28px;
+}
+
+footer p {
+    margin: 8px 0;
+
+    font-style: italic;
+}
+
+footer small {
+    color: #867556;
+}
+
+
+/* =========================================
+   ANIMAÇÕES
+========================================= */
+
+.pagina,
+.card,
+.caminho {
+    animation: aparecer 0.8s ease;
+}
+
+@keyframes aparecer {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================================
+   RESPONSIVIDADE
+========================================= */
+
+@media (max-width: 800px) {
+
+    .cabecalho {
+        gap: 20px;
+    }
+
+    .brasao,
+    .ornamento {
+        display: none;
+    }
+
+    .menu {
+        gap: 15px;
+    }
+
+    .pagina {
+        margin: 30px 15px;
+
+        padding: 60px 25px;
+    }
+
+    .titulo-secao {
+        gap: 10px;
+    }
+
+    .ornamento-lateral {
+        display: none;
+    }
+
+    .cards,
+    .caminhos,
+    .competicao-conteudo {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-conteudo {
+        padding: 50px 25px;
+    }
+
+    .hero {
+        min-height: 550px;
+    }
+
+    .titulo-header h1 {
+        font-size: 45px;
+    }
+
+    .texto-prefacio {
+        text-align: left;
+    }
+
+}
