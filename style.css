@@ -793,3 +793,21 @@ footer small {
     }
 
 }
+
+/* Estilos para o container do convite */
+.convite-container {
+    display: flex;
+    justify-content: center; /* Centraliza a imagem na tela */
+    align-items: center;
+    margin: 20px auto; /* Dá um pequeno espaço entre o cabeçalho e o resto do site */
+    padding: 0 15px; /* Evita que a imagem grude nas bordas no celular */
+    max-width: 800px; /* Limita a largura máxima para não ficar gigante no PC */
+}
+
+/* Estilos para a imagem do convite em si */
+.imagem-convite {
+    width: 100%; /* Faz a imagem se adaptar ao tamanho da tela */
+    height: auto; /* Mantém a proporção da imagem */
+    border-radius: 12px; /* Deixa as bordas arredondadas (opcional, mas fica moderno) */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Adiciona uma sombra leve */
+}
